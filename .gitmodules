@@ -1,3 +1,10 @@
+[submodule "lib/arbiters"]
+	path = lib/arbiters
+	url = https://github.com/Uniswap/arbiters
 [submodule "lib/the-compact"]
 	path = lib/the-compact
 	url = https://github.com/Uniswap/the-compact
+[submodule "lib/the-compact-server"]
+	path = lib/the-compact-server
+	url = https://github.com/Uniswap/the-compact
+	branch = server-based-allocator
