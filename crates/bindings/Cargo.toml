@@ -1,7 +1,15 @@
 [package]
-name = "the-compact-bindings"
-version = "0.1.0"
-edition = "2021"
+name = "the-compact-rs-bindings"
+
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+repository.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-alloy = { git = "https://github.com/alloy-rs/alloy", features = ["sol-types", "contract"] }
+alloy = { workspace = true, features = ["sol-types", "contract"] }
