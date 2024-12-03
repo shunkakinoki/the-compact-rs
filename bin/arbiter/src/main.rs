@@ -35,8 +35,7 @@ mod tests {
     use super::*;
 
     #[test]
-    #[should_panic]
     fn test_parse_args() {
-        Args::parse();
+        Args::parse_from([""].iter());
     }
 }
