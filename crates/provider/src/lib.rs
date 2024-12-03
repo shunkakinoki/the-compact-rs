@@ -1,6 +1,7 @@
 //! The provider crate for the compact-rs project.
 
-fn main() {
+/// Main entry point for the provider crate.
+pub fn main() {
     println!("Hello from the provider crate!");
 }
 
@@ -9,7 +10,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_parse_args() {
+    fn test_main() {
         main();
     }
 }
