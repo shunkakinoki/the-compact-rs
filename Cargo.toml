@@ -39,3 +39,9 @@ tokio = "1.41.1"
 
 # CLI
 clap = "4.5.21"
+
+# Ethereum
+alloy = "0.7.2"
+
+[patch.crates-io]
+alloy = { git = "https://github.com/alloy-rs/alloy", rev = "9b344069000b1588ae5aba6d3da6bdcb072ecd15" }
