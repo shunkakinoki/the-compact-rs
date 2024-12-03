@@ -7,6 +7,7 @@
 [submodule "lib/the-compact-patch"]
 	path = lib/the-compact-patch
 	url = https://github.com/shunkakinoki/the-compact
+	branch = patch
 [submodule "lib/the-compact-server"]
 	path = lib/the-compact-server
 	url = https://github.com/Uniswap/the-compact
