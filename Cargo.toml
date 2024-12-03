@@ -1,0 +1,41 @@
+[workspace]
+members = ["crates/*", "bin/*"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+rust-version = "1.83"
+authors = ["shunkakinoki"]
+homepage = "https://github.com/shunkakinoki/the-compact-rs"
+repository = "https://github.com/shunkakinoki/the-compact-rs"
+keywords = ["ethereum", "the-compact", "crypto"]
+categories = ["cryptography", "cryptography::cryptocurrencies"]
+exclude = ["benches/", "tests/"]
+
+[workspace.lints.rust]
+missing-debug-implementations = "warn"
+missing-docs = "warn"
+unreachable-pub = "warn"
+unused-must-use = "deny"
+rust-2018-idioms = "deny"
+unnameable-types = "warn"
+
+[profile.dev]
+opt-level = 1
+overflow-checks = false
+
+[profile.bench]
+debug = true
+
+[profile.dev-client]
+inherits = "dev"
+panic = "abort"
+
+[workspace.dependencies]
+# Async
+tokio = "1.41.1"
+
+# CLI
+clap = "4.5.21"
