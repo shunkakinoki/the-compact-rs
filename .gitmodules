@@ -4,6 +4,9 @@
 [submodule "lib/the-compact"]
 	path = lib/the-compact
 	url = https://github.com/Uniswap/the-compact
+[submodule "lib/the-compact-patch"]
+	path = lib/the-compact-patch
+	url = https://github.com/shunkakinoki/the-compact
 [submodule "lib/the-compact-server"]
 	path = lib/the-compact-server
 	url = https://github.com/Uniswap/the-compact
