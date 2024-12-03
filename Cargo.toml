@@ -1,5 +1,11 @@
 [workspace]
-members = ["crates/*", "bin/*"]
+members = [
+  "bin/allocator",
+  "bin/arbiter",
+  "crates/bindings/v0",
+  "crates/bindings/patch",
+  "crates/bindings/server",
+]
 resolver = "2"
 
 [workspace.package]
