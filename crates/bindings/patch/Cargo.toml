@@ -1,5 +1,5 @@
 [package]
-name = "the-compact-rs-bindings"
+name = "the-compact-rs-bindings-patch"
 
 version.workspace = true
 edition.workspace = true

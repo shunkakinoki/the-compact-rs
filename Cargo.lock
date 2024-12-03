@@ -2844,17 +2844,24 @@ dependencies = [
 ]
 
 [[package]]
-name = "the-compact-rs-bindings"
+name = "the-compact-rs-bindings-patch"
 version = "0.1.0"
 dependencies = [
  "alloy",
 ]
 
 [[package]]
-name = "the-compact-rs-provider"
+name = "the-compact-rs-bindings-server"
 version = "0.1.0"
 dependencies = [
- "clap",
+ "alloy",
+]
+
+[[package]]
+name = "the-compact-rs-bindings-v0"
+version = "0.1.0"
+dependencies = [
+ "alloy",
 ]
 
 [[package]]

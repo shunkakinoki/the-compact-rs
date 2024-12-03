@@ -6,26 +6,48 @@ default: build
 # Define variables
 CARGO=cargo
 CRATES_FOLDER=crates
-THE_COMPACT_PATH=./lib/the-compact
-THE_COMPACT_SERVER_PATH=./lib/the-compact-server
 BINDINGS_FOLDER=bindings
-BINDINGS_CRATES_FOLDER=$(CRATES_FOLDER)/$(BINDINGS_FOLDER)
-BINDINGS_OUT_PATH=$(THE_COMPACT_PATH)/out/$(BINDINGS_FOLDER)
 
-# Target for generating bindings
-.PHONY: bindings
-bindings:
-	rm -rf $(BINDINGS_CRATES_FOLDER)/src/*
-	rm -rf $(BINDINGS_OUT_PATH)
+# Define binding libraries and their paths
+BINDING_LIBS := the-compact the-compact-patch the-compact-server
+
+# Define mapping for destination folders
+BINDING_DEST_NAMES := \
+	the-compact:v0 \
+	the-compact-patch:patch \
+	the-compact-server:server
+
+# Function to get destination name from mapping
+get_dest_name = $(word 2,$(subst :, ,$(filter $(1):%,$(BINDING_DEST_NAMES))))
+
+BINDING_PATHS := $(addprefix ./lib/,$(BINDING_LIBS))
+BINDING_TARGETS := $(addprefix bindings-,$(BINDING_LIBS))
+
+# Target for generating bindings for a specific lib
+.PHONY: bindings-%
+bindings-%:
+	$(eval LIB_NAME := $*)
+	$(eval LIB_PATH := ./lib/$(LIB_NAME))
+	$(eval BINDING_OUT_PATH := $(LIB_PATH)/out/bindings)
+	$(eval DEST_NAME := $(call get_dest_name,$(LIB_NAME)))
+	$(eval BINDING_DEST_PATH := $(CRATES_FOLDER)/$(BINDINGS_FOLDER)/$(DEST_NAME))
+
+# Clean old bindings
+	rm -rf $(BINDING_OUT_PATH)
+	rm -rf $(BINDING_DEST_PATH)/src
 
 # Generate new bindings
-	@forge bind --root $(THE_COMPACT_PATH) --crate-name $(BINDINGS_FOLDER)
+	@forge bind --root $(LIB_PATH) --crate-name bindings
 
-# Make sure directory exists
-	@mkdir -p $(BINDINGS_CRATES_FOLDER)/src
+# Make sure destination directory exists
+	@mkdir -p $(BINDING_DEST_PATH)/src
 
 # Move bindings to the correct location
-	@cp -r $(BINDINGS_OUT_PATH)/src/* $(BINDINGS_CRATES_FOLDER)/src/
+	@cp -r $(BINDING_OUT_PATH)/src/* $(BINDING_DEST_PATH)/src/
+
+# Meta-target to generate all bindings
+.PHONY: bindings
+bindings: $(BINDING_TARGETS)
 
 # Target for building the project
 .PHONY: build
