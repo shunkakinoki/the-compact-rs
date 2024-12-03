@@ -29,3 +29,13 @@ async fn async_main(args: Args) {
     // TODO: Implement arbiter logic here
     println!("Running arbiter on {}:{}", args.address, args.port);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_args() {
+        Args::parse();
+    }
+}

@@ -29,3 +29,13 @@ async fn async_main(args: Args) {
     // TODO: Implement allocator logic here
     println!("Running allocator on {}:{}", args.address, args.port);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_args() {
+        Args::parse();
+    }
+}
