@@ -17,7 +17,6 @@ BINDING_DEST_NAMES := \
 	the-compact-patch:patch \
 	the-compact-server:server
 
-<<<<<<< HEAD
 # Define reverse mapping for command convenience
 V0_TARGET := the-compact
 PATCH_TARGET := the-compact-patch
@@ -35,13 +34,6 @@ bindings-patch: bindings-$(PATCH_TARGET)
 
 .PHONY: bindings-server
 bindings-server: bindings-$(SERVER_TARGET)
-=======
-# Function to get destination name from mapping
-get_dest_name = $(word 2,$(subst :, ,$(filter $(1):%,$(BINDING_DEST_NAMES))))
-
-BINDING_PATHS := $(addprefix ./lib/,$(BINDING_LIBS))
-BINDING_TARGETS := $(addprefix bindings-,$(BINDING_LIBS))
->>>>>>> origin/main
 
 # Target for generating bindings for a specific lib
 .PHONY: bindings-%
