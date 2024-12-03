@@ -14,14 +14,17 @@ BINDINGS_OUT_PATH=$(THE_COMPACT_PATH)/out/$(BINDINGS_FOLDER)
 # Target for generating bindings
 .PHONY: bindings
 bindings:
-	rm -rf $(BINDINGS_CRATES_FOLDER)
+	rm -rf $(BINDINGS_CRATES_FOLDER)/src/*
 	rm -rf $(BINDINGS_OUT_PATH)
 
 # Generate new bindings
 	@forge bind --root $(THE_COMPACT_PATH) --crate-name $(BINDINGS_FOLDER)
 
+# Make sure directory exists
+	@mkdir -p $(BINDINGS_CRATES_FOLDER)/src
+
 # Move bindings to the correct location
-	@mv -f $(BINDINGS_OUT_PATH) $(CRATES_FOLDER)
+	@cp -r $(BINDINGS_OUT_PATH)/src/* $(BINDINGS_CRATES_FOLDER)/src/
 
 # Target for building the project
 .PHONY: build
