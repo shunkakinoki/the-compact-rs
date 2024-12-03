@@ -1,0 +1,23 @@
+[package]
+name = "the-compact-rs-api"
+
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+axum = { workspace = true }
+clap = { workspace = true, features = ["derive", "env"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+utoipa = { workspace = true }
+utoipa-axum = { workspace = true }
+utoipa-swagger-ui = { workspace = true }
